@@ -1,74 +1,41 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProjectCard({ project }) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <Link href={`/projects/${project.slug}`} className="group block">
-      <div
-        ref={ref}
-        className={`grid md:grid-cols-[1.5fr_4fr] gap-6 items-stretch mb-6 transition-all duration-700 ease-out ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-        }`}
-      >
-        {/* Left: image (smaller column) */}
-        <div className="relative rounded-2xl overflow-hidden bg-panel h-72 md:h-80">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+    <Link
+      href={`/projects/${project.slug}`}
+      className="group flex flex-col rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-orange-500/40 transition"
+    >
+      <div className="relative h-56 w-full overflow-hidden bg-white/10">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover group-hover:scale-105 transition duration-300"
+        />
+      </div>
 
-          {/* Dark overlay + View circle on hover */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="w-16 h-16 rounded-full bg-orange-500 text-white text-sm font-semibold flex items-center justify-center scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 ease-out">
-              View
-            </span>
-          </div>
-        </div>
+      <div className="p-6 flex flex-col gap-3">
+        <span className="w-fit text-xs font-semibold px-3 py-1 rounded-full bg-orange-500/10 text-orange-400">
+          {project.category}
+        </span>
 
-        {/* Right: text + stats (bigger column) */}
-        <div className="bg-panel rounded-2xl p-8 flex flex-col justify-between h-72 md:h-80">
-          <div>
-            <span className="inline-block bg-black/30 text-orange-500 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              CASE STUDY
-            </span>
-            <h3 className="text-white text-2xl md:text-3xl font-bold mb-3">
-              {project.title}
-            </h3>
-            <p className="text-gray-400 text-sm md:text-base">
-              {project.subtitle}
-            </p>
-          </div>
+        <h3 className="text-xl font-semibold text-white leading-snug">
+          {project.title}
+        </h3>
 
-          <div className="flex gap-12 mt-6">
-            {project.stats.map((s, i) => (
-              <div key={i}>
-                <p className="text-orange-500 text-4xl md:text-5xl font-bold leading-none mb-2">
-                  {s.value}
-                </p>
-                <p className="text-gray-500 text-sm">{s.label}</p>
-              </div>
-            ))}
-          </div>
+        <p className="text-sm text-white/50 leading-relaxed">
+          {project.shortDesc}
+        </p>
+
+        <div className="flex gap-8 mt-3">
+          {project.cardStats.map((stat) => (
+            <div key={stat.label}>
+              <p className="text-2xl font-bold text-orange-400">{stat.value}</p>
+              <p className="text-xs text-white/40 mt-1">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </Link>
