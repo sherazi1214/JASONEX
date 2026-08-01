@@ -2,7 +2,7 @@ export const posts = [
   {
     slug: "unlocking-power-of-seo-keyword-research",
     image: "/blog/images.jpeg",
-    date: "Feb 7, 2024",
+    date: "jul 24, 2026",
     category: "News",
     featured: true,
     title:
@@ -17,7 +17,7 @@ export const posts = [
   {
     slug: "navigating-marketplace-for-seo",
     image: "/blog/images2.jpeg",
-    date: "Feb 7, 2024",
+    date: "jul 25, 2026",
     category: "Article",
     featured: false,
     title:
@@ -31,7 +31,7 @@ export const posts = [
   {
     slug: "empower-seo-strategy-top-tools",
     image: "/blog/images3.jpeg",
-    date: "Feb 7, 2024",
+    date: "jul 26, 2026",
     category: "News",
     featured: false,
     title:
@@ -45,7 +45,7 @@ export const posts = [
   {
     slug: "content-marketing-trends-2024",
     image: "/blog/images4.jpeg",
-    date: "Feb 3, 2024",
+    date: "jul 27, 2026",
     category: "News",
     featured: false,
     title: "Content Marketing Trends to Watch in 2024 and Beyond",
@@ -58,7 +58,7 @@ export const posts = [
   {
     slug: "local-seo-checklist-small-business",
     image: "/blog/images5.jpeg",
-    date: "Jan 28, 2024",
+    date: "Jul 28, 2026",
     category: "Article",
     featured: false,
     title: "The Ultimate Local SEO Checklist for Small Businesses",
@@ -71,7 +71,7 @@ export const posts = [
   {
     slug: "social-media-marketing-roi",
     image: "/blog/images6.jpeg",
-    date: "Jan 20, 2024",
+    date: "Jul 29, 2026",
     category: "News",
     featured: false,
     title: "How to Measure Social Media Marketing ROI the Right Way",

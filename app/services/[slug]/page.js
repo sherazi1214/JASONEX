@@ -4,12 +4,27 @@ import * as Icons from "lucide-react";
 import { ArrowUpRight, ArrowLeft, Check } from "lucide-react";
 import { services } from "@/lib/data";
 
+// Slugs that already have their own dedicated page.js file
+// (app/services/<slug>/page.js). Keeping these in generateStaticParams
+// here too causes a Next.js build conflict, since two routes would
+// resolve to the exact same path. Add any new dedicated-page slug here.
+const DEDICATED_SLUGS = [
+  "ai-automation",
+  "website-development",
+  "app-development",
+  "digital-marketing",
+];
+
+const dynamicServices = services.filter(
+  (s) => !DEDICATED_SLUGS.includes(s.slug)
+);
+
 export async function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
+  return dynamicServices.map((service) => ({ slug: service.slug }));
 }
 
 export function generateMetadata({ params }) {
-  const service = services.find((s) => s.slug === params.slug);
+  const service = dynamicServices.find((s) => s.slug === params.slug);
   if (!service) return {};
   return {
     title: service.title,
@@ -18,7 +33,7 @@ export function generateMetadata({ params }) {
 }
 
 export default function ServiceDetailPage({ params }) {
-  const service = services.find((s) => s.slug === params.slug);
+  const service = dynamicServices.find((s) => s.slug === params.slug);
 
   if (!service) return notFound();
 
