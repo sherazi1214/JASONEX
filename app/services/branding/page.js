@@ -162,7 +162,7 @@ const testimonials = [
 
 const logos = ["Logoipsum", "LOGOIPSUM", "logo ipsum", "Logoipsum", "LOGOIPSUM", "logo ipsum"];
 
-const samples = ["/services/branding/sample-1.png", "/services/branding/sample-2.jpg", "/services/branding/sample-3.jpg", "/services/branding/sample-4.jpg"];
+const samples = ["/services/branding/sample-1.jpeg", "/services/branding/sample-2.jpg", "/services/branding/sample-3.jpg", "/services/branding/sample-4.jpg"];
 
 const processSteps = [
   {
@@ -347,7 +347,7 @@ export default function BrandingPage() {
 
         <Reveal delay={0.15} className="mt-14 rounded-2xl overflow-hidden h-72 md:h-[420px]">
           <img
-            src="/services/branding/sample-1.png"
+            src="/services/branding/sample-1.jpeg"
             alt="Branding"
             className="w-full h-full object-cover"
           />
