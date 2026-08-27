@@ -1,10 +1,10 @@
-# Agencee — Next.js Marketing Site
+# Jasonex Technologies — Next.js Marketing Site
 
 ## Kaisay chalayen (How to run)
 
 1. Terminal khol kar is folder mein aayen:
    ```
-   cd agencee-site
+   cd jasonex-technologies-site
    ```
 2. Dependencies install karein:
    ```

@@ -26,7 +26,8 @@ export const projects = [
     category: "Case Study",
     title: "SEO Success Story of an Architecture Firm",
     shortDesc: "How ArchiVision Architects achieved top rankings with strategic SEO.",
-    image: "/projects/architecture-firm.jpg",
+    image:
+      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1200&auto=format&fit=crop",
     headlineResult: "3x organic lead growth",
     challenge:
       "The firm's site had almost no organic visibility despite strong project work, losing leads to less-established competitors.",
@@ -48,7 +49,8 @@ export const projects = [
     category: "Case Study",
     title: "Full-Funnel Growth For a SaaS Startup",
     shortDesc: "How BlueSky Ventures scaled paid and organic acquisition together.",
-    image: "/projects/saas-startup.jpg",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
     headlineResult: "2.4x return on ad spend",
     challenge:
       "Paid and organic channels were running independently with no shared strategy, leading to wasted spend and inconsistent lead quality.",

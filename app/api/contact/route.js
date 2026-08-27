@@ -23,7 +23,7 @@ export async function POST(request) {
     const phone = phoneMatch ? phoneMatch[1].trim() : "N/A";
 
     const mailOptions = {
-      from: `"Agencee Website" <${process.env.GMAIL_USER}>`,
+      from: `"Jasonex Technologies Website" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
       replyTo: email,
       subject: `New Lead: ${name} — ${phone}`,

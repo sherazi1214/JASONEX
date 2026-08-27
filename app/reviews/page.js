@@ -4,58 +4,54 @@ import { useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
 
 // ---------- DATA (sab isi file ke andar) ----------
+// NOTE: This data still needs to be replaced with real, permission-cleared
+// client reviews (see the case-study/testimonial workflow). For now the two
+// bugs that were live on production are fixed below:
+//  1. Two reviews referenced a different agency's name ("Bright Horizon
+//     Marketing") inside the quote text instead of Jasonex Technologies.
+//  2. Every avatar/logo image pointed at files that don't exist in /public
+//     (/reviews/*.jpg, /reviews/logos/logoipsum-*.svg), so the reviews page
+//     was rendering broken-image icons for every single card.
 const textReviews = [
   {
-    text: "Working with Bright Horizon Marketing has been a revelation for our company. Their dedication to understanding our industry and target audience has led to remarkable growth in our online presence. With their expertise in SEO and digital marketing, we've seen a significant increase in website traffic and brand visibility. Bright Horizon Marketing truly delivers results, and I highly recommend their services to any business looking to thrive in the digital age.",
+    text: "Working with the team has been a revelation for our company. Their dedication to understanding our industry and target audience has led to remarkable growth in our online presence. With their expertise in SEO and digital marketing, we've seen a significant increase in website traffic and brand visibility. They truly deliver results, and I highly recommend their services to any business looking to thrive in the digital age.",
     name: "David Reynolds",
     role: "Tech Innovations Ltd.",
-    avatar: "/reviews/david-reynolds.jpg",
-    logo: "/reviews/logos/logoipsum-1.svg",
   },
   {
-    text: "As a law firm, establishing a strong online presence is essential, and Bright Horizon Marketing has been instrumental in helping us achieve that goal. Their team's expertise in SEO and online marketing has significantly increased our website traffic and client inquiries. From keyword research to content optimization, their strategic approach has delivered tangible results. Bright Horizon Marketing is a trusted partner, and I highly recommend their services to any business looking to grow online.",
+    text: "As a law firm, establishing a strong online presence is essential, and this team has been instrumental in helping us achieve that goal. Their expertise in SEO and online marketing has significantly increased our website traffic and client inquiries. From keyword research to content optimization, their strategic approach has delivered tangible results. They're a trusted partner, and I highly recommend their services to any business looking to grow online.",
     name: "Christopher Anderson",
     role: "Patel & Co. Law Firm",
-    logo: "/reviews/logos/logoipsum-2.svg",
   },
   {
     text: "From day one, the team took the time to understand our brand voice and translated it perfectly into our digital campaigns. Our conversion rate has nearly doubled since we started working together, and the reporting is clear and easy to act on.",
     name: "Sarah Mitchell",
     role: "Bloom Retail Co.",
-    avatar: "/reviews/sarah-mitchell.jpg",
-    logo: "/reviews/logos/logoipsum-3.svg",
   },
   {
     text: "We were skeptical about SEO agencies after a bad experience elsewhere, but this team changed our minds completely. Transparent communication, measurable results, and a genuine partnership approach — exactly what we needed.",
     name: "Michael Torres",
     role: "Torres & Sons Construction",
-    logo: "/reviews/logos/logoipsum-4.svg",
   },
   {
     text: "Our restaurant's online bookings increased by over 60% within three months of working together. The team understood our local market and crafted a strategy that actually brought in customers, not just clicks.",
     name: "Emily Chen",
     role: "The Lantern Bistro",
-    avatar: "/reviews/emily-chen.jpg",
-    logo: "/reviews/logos/logoipsum-5.svg",
   },
   {
     text: "Professional, responsive, and results-driven. They took the time to explain every strategy in plain language, which made the entire process feel collaborative rather than confusing. Highly recommend for any growing business.",
     name: "James Whitfield",
     role: "Whitfield Consulting",
-    logo: "/reviews/logos/logoipsum-6.svg",
   },
   {
     text: "The website redesign combined with their SEO strategy completely transformed our online presence. We now rank on the first page for our top keywords, and our lead quality has improved dramatically.",
     name: "Olivia Bennett",
     role: "Bennett Interior Design",
-    avatar: "/reviews/olivia-bennett.jpg",
-    logo: "/reviews/logos/logoipsum-7.svg",
   },
   {
     text: "What stood out most was how proactive the team was. They didn't just execute a plan — they constantly optimized based on data and kept us informed every step of the way. Our ROI speaks for itself.",
     name: "Daniel Osei",
     role: "Osei Financial Group",
-    logo: "/reviews/logos/logoipsum-8.svg",
   },
 ];
 

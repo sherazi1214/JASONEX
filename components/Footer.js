@@ -58,7 +58,7 @@ export default function ContactFooter() {
     },
     {
       name: "linkedin",
-      href: "https://www.linkedin.com/shareArticle?mini=true&url=https://www.agencee.com&title=Agencee&summary=Building%20smarter%20digital%20experiences%20for%20growing%20businesses.",
+      href: "https://www.linkedin.com/shareArticle?mini=true&url=https://www.jasonextechnologies.com&title=Jasonex%20Technologies&summary=Building%20smarter%20digital%20experiences%20for%20growing%20businesses.",
     },
     {
       name: "instagram",
@@ -147,7 +147,7 @@ export default function ContactFooter() {
           <Link href="/" className="flex items-center gap-2">
             <img
               src="/logo.png"
-              alt="Agencee logo"
+              alt="Jasonex Technologies logo"
               className="h-70 w-auto object-contain"
             />
           </Link>

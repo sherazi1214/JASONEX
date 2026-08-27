@@ -8,7 +8,7 @@ const photoSets = [
     "About/gallery-1a.jpeg",
     "About/gallery-1b.jpeg",
     "About/gallery-2c.jpeg",
-    "About/gallery-1d.jpeg",
+    "About/gallery-2b.jpeg",
   ],
   [
     "About/gallery-2a.jpeg",

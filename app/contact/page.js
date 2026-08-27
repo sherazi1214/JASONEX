@@ -14,13 +14,16 @@ import {
 import Reveal from "@/components/Reveal";
 import ContactFormCard from "@/components/ContactFormCard";
 
-export const metadata = { title: "Contact | Agencee" };
+export const metadata = { title: "Contact | Jasonex Technologies" };
 
+// Facebook/Instagram point at the real Jasonex accounts (same URLs used in
+// the footer). YouTube/WhatsApp/Telegram/TikTok/X still need real account
+// links — leaving those as "#" rather than inventing URLs.
 const socials = [
-  { icon: Instagram, href: "#", label: "Instagram", className: "bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400" },
+  { icon: Instagram, href: "https://www.instagram.com/jasonextechnologies?igsh=bTRqZXlmODR1YXZr", label: "Instagram", className: "bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400" },
   { icon: Youtube, href: "#", label: "YouTube", className: "bg-red-600" },
-  { icon: Facebook, href: "#", label: "Facebook", className: "bg-blue-600" },
-  { icon: MessageCircle, href: "#", label: "WhatsApp", className: "bg-green-500" },
+  { icon: Facebook, href: "https://www.facebook.com/share/19HbBNGcGv/", label: "Facebook", className: "bg-blue-600" },
+  { icon: MessageCircle, href: "https://wa.me/923083390915", label: "WhatsApp", className: "bg-green-500" },
   { icon: Linkedin, href: "#", label: "LinkedIn", className: "bg-blue-700" },
   { icon: X, href: "#", label: "X", className: "bg-black border border-white/30" },
   { icon: Send, href: "#", label: "Telegram", className: "bg-sky-500" },
@@ -37,7 +40,7 @@ export default function ContactPage() {
           <div className="aspect-square w-full overflow-hidden rounded-2xl">
             <img
               src="/zeeshan.png"
-              alt="CEO of Agencee"
+              alt="CEO of Jasonex Technologies"
               className="h-full w-full object-cover"
             />
           </div>

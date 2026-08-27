@@ -6,10 +6,14 @@ import { useInView } from "framer-motion";
 export default function CountUp({ value, suffix = "", duration = 1.4 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
+  // Start from the real value (not 0) so the correct number is what gets
+  // server-rendered and what shows if JS never runs/loads. The animation
+  // below is a progressive enhancement on top of that, not a requirement.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (!inView) return;
+    setDisplay(0);
     let start = null;
     const step = (ts) => {
       if (start === null) start = ts;

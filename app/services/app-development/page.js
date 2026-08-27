@@ -162,7 +162,7 @@ const testimonials = [
 
 const logos = ["Logoipsum", "LOGOIPSUM", "logo ipsum", "Logoipsum", "LOGOIPSUM", "logo ipsum"];
 
-const samples = ["/services/app-development/sample-1.png", "/services/app-development/sample-2.jpg", "/services/app-development/sample-3.png", "/services/app-development/sample-4.png"];
+const samples = ["/services/app-development/sample-1.png", "/services/app-development/sample-2.jpg", "/services/app-development/sample-3.jpg"];
 
 const processSteps = [
   {
