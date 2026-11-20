@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { Star, Calendar, Tag } from "lucide-react";
 import Reveal from "./components/Reveal";
-import { posts } from "./postsData";
+import { readCollection } from "../../lib/store";
 
-export default function BlogPage() {
+export const dynamic = "force-dynamic";
+
+export default async function BlogPage() {
+  const posts = await readCollection("posts");
   return (
     <section className="bg-ink py-20 px-6 max-w-6xl mx-auto">
       <Reveal className="mb-14 text-center">
@@ -20,11 +23,13 @@ export default function BlogPage() {
           <Reveal key={post.slug} delay={i * 0.08}>
             <Link href={`/blog/${post.slug}`} className="group block">
               <div className="relative rounded-2xl overflow-hidden h-64 mb-4">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">

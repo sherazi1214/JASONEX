@@ -5,17 +5,25 @@ import Process from "./components/Process";
 import Team from "./components/Team";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
+import { readCollection } from "../../lib/store";
 
+export const dynamic = "force-dynamic";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [founder, team, snaps] = await Promise.all([
+    readCollection("founder"),
+    readCollection("team"),
+    readCollection("snaps"),
+  ]);
+
   return (
     <main>
       <Hero />
       <AboutCompany />
-      <Founder />
+      <Founder founder={founder} />
       <Process />
-      <Team />
-      <Gallery />
+      <Team members={team} />
+      <Gallery snaps={snaps} />
       <FAQ />
     </main>
   );

@@ -1,52 +1,9 @@
 "use client";
 
-export default function Team() {
-  const team = [
-    {
-      role: "MARKETING GENIUS",
-      name: "Sayed Zeeshan Haider",
-      title: "Founder & CEO",
-      image: "About/zeeshan.png",
-    },
-    {
-      role: "SEO MASTERMIND",
-      name: "Ijaz Hussain",
-      title: "SEO Specialist",
-      image: "About/ijaz.jpeg",
-    },
-    {
-      
-      role: "DESIGNER & DEVELOPER",
-      name: "Sayed Wajahat Ali Shah",
-      title: "Senior Developer",
-      image: "About/wajahat.jpeg",
-    },
-    
-    {
-      
-      role: "Graphic Designer",
-      name: "Abdul Rahman",
-      title: "UI/UX Designer",
-      image: "About/graphic.jpeg",
-    },
-    {
-      
-      role: " content creator",
-      name: "Measum",
-      title: "UI/UX Designer",
-      image: "About/masim.jpeg",
-    },
-
-    {
-      
-      role: "video editer",
-      name: "Abdullah",
-      title: "UI/UX Designer",
-      image: "About/abdul.jpeg",
-    },
-  ];
-
-  const marqueeTeam = [...team, ...team];
+export default function Team({ members = [] }) {
+  // Marquee seamless chalne ke liye list do dafa; kam members ho to aur copies.
+  const base = members.length && members.length < 6 ? [...members, ...members, ...members] : members;
+  const marqueeTeam = [...base, ...base];
 
   return (
     <section className="bg-ink py-20 px-6 text-center overflow-hidden">
@@ -64,21 +21,19 @@ export default function Team() {
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee gap-6">
           {marqueeTeam.map((member, i) => (
-            <div key={i} className="text-left w-64 shrink-0">
+            <div key={`${member.id || member.name}-${i}`} className="text-left w-64 shrink-0">
               <div className="relative rounded-xl overflow-hidden bg-panel h-72">
-                <h3 className="absolute top-4 left-4 z-0 text-3xl font-display font-bold text-orange-500 leading-none">
-                  {member.tagline}
-                </h3>
-
                 <span className="absolute top-5 right-4 z-10 text-white text-xs font-semibold tracking-wide">
                   {member.role}
                 </span>
 
+                {member.image && (
                 <img
                   src={member.image}
                   alt={member.name}
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 h-64 w-auto object-cover grayscale z-[1]"
                 />
+                )}
 
                 <button className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white/90 hover:bg-orange-500 hover:text-white rounded-md text-black text-lg font-bold transition-colors">
                   +

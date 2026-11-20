@@ -1,10 +1,14 @@
-import Link from "next/link";
 import Image from "next/image";
+import { FileText } from "lucide-react";
 
+// Card pe click karte hi PDF naye tab me khulti hai (koi extra page nahi).
 export default function ProjectCard({ project }) {
   return (
-    <Link
-      href={`/projects/${project.slug}`}
+    <a
+      href={project.pdf}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Open ${project.title} PDF`}
       className="group flex flex-col rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-orange-500/40 transition"
     >
       <div className="relative h-56 w-full overflow-hidden bg-white/10">
@@ -12,6 +16,7 @@ export default function ProjectCard({ project }) {
           src={project.image}
           alt={project.title}
           fill
+          sizes="(max-width: 768px) 100vw, 400px"
           className="object-cover group-hover:scale-105 transition duration-300"
         />
       </div>
@@ -25,9 +30,7 @@ export default function ProjectCard({ project }) {
           {project.title}
         </h3>
 
-        <p className="text-sm text-white/50 leading-relaxed">
-          {project.shortDesc}
-        </p>
+        <p className="text-sm text-white/50 leading-relaxed">{project.shortDesc}</p>
 
         <div className="flex gap-8 mt-3">
           {project.cardStats.map((stat) => (
@@ -37,7 +40,11 @@ export default function ProjectCard({ project }) {
             </div>
           ))}
         </div>
+
+        <span className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-orange-400 group-hover:text-orange-300">
+          <FileText size={16} /> View PDF
+        </span>
       </div>
-    </Link>
+    </a>
   );
 }

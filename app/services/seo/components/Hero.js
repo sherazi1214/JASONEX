@@ -59,7 +59,7 @@ export default function Hero() {
           Get a Free SEO Audit
         </Link>
         <Link
-          href="/projects"
+          href="/portfolio"
           className="rounded-full px-6 py-3 border border-white/20 text-white/80 hover:border-sun hover:text-sun transition"
         >
           See Our Results

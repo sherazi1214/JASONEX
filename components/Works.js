@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
 import { works } from "@/lib/data";
@@ -53,9 +54,9 @@ export default function Works() {
             Case Studies that speak for themselves.
           </h2>
         </div>
-        <a href="#reviews" className="btn-dark">
-          See Results <ArrowUpRight size={18} />
-        </a>
+        <Link href="/portfolio" className="btn-dark">
+          See Portfolio <ArrowUpRight size={18} />
+        </Link>
       </Reveal>
 
       <div className="grid gap-6 md:grid-cols-3">

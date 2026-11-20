@@ -37,7 +37,7 @@ export default function ContactFooter() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
-    { href: "/projects", label: "Projects" },
+    { href: "/portfolio", label: "Portfolio" },
     { href: "/blog", label: "Blog" },
     { href: "/reviews", label: "Review" },
     { href: "/contact", label: "Contact" },

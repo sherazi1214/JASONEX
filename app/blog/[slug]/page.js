@@ -2,15 +2,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import Reveal from "../components/Reveal";
-import { posts } from "../postsData";
+import { readCollection } from "../../../lib/store";
 
-// Sirf inhi slugs ke liye pages banao (build time pe)
-export function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+export const dynamic = "force-dynamic";
+
+// Next 16 me `params` Promise hota hai — pehle `await` karna zaroori hai (404 ki asal wajah yehi thi).
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = (await readCollection("posts")).find((p) => p.slug === slug);
+  return { title: post ? `${post.title} | JASONEX` : "Blog | JASONEX" };
 }
 
-export default function BlogPostPage({ params }) {
-  const post = posts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }) {
+  const { slug } = await params;
+  const posts = await readCollection("posts");
+  const post = posts.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
@@ -48,11 +54,13 @@ export default function BlogPostPage({ params }) {
 
       {/* Hero image */}
       <Reveal delay={0.2} className="rounded-2xl overflow-hidden mb-10 h-72 md:h-96">
-        <img
-          src={post.image}
-          alt={post.title}
-          className="w-full h-full object-cover"
-        />
+        {post.image && (
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+        )}
       </Reveal>
 
       {/* Article content */}

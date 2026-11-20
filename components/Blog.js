@@ -1,19 +1,9 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
-import { blogPosts } from "@/lib/data";
 
-export default function Blog() {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggle = (index) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
-  };
-
+// Home page ka blog section: latest 3 posts, "Read More" par asli blog page khulta hai.
+export default function Blog({ posts = [] }) {
   return (
     <section className="section" id="blog">
       <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-4">
@@ -29,64 +19,40 @@ export default function Blog() {
       </Reveal>
 
       <div className="grid gap-6 md:grid-cols-3">
-        {blogPosts.map((post, i) => {
-          const isOpen = openIndex === i;
-
-          return (
-            <Reveal
-              key={post.slug ?? i}
-              delay={i * 0.08}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-panel"
-            >
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
+        {posts.map((post, i) => (
+          <Reveal
+            key={post.slug}
+            delay={i * 0.08}
+            className="group overflow-hidden rounded-3xl border border-white/10 bg-panel"
+          >
+            <Link href={`/blog/${post.slug}`} className="block">
+              <div className="relative h-48 w-full overflow-hidden bg-white/5">
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                )}
               </div>
 
               <div className="p-6">
                 <div className="mb-3 flex gap-2 text-xs">
                   <span className="rounded-full bg-white/10 px-3 py-1">{post.date}</span>
-                  <span className="rounded-full bg-sun/10 px-3 py-1 text-sun">{post.tag}</span>
+                  <span className="rounded-full bg-sun/10 px-3 py-1 text-sun">{post.category}</span>
                 </div>
 
                 <h3 className="mb-4 font-display text-base font-semibold leading-snug">
                   {post.title}
                 </h3>
 
-                {/* Expandable content */}
-                <div
-                  className={`grid transition-all duration-500 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="mb-4 whitespace-pre-line text-sm text-white/60">
-                      {post.content || "Full blog content coming soon."}
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => toggle(i)}
-                  className="flex items-center gap-1 text-sm font-medium text-sun hover:underline"
-                >
-                  {isOpen ? "Show Less" : "Read More"}
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : "rotate-0"
-                    }`}
-                  />
-                </button>
+                <span className="flex items-center gap-1 text-sm font-medium text-sun group-hover:underline">
+                  Read More <ArrowUpRight size={14} />
+                </span>
               </div>
-            </Reveal>
-          );
-        })}
+            </Link>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
